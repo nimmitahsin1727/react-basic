@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './styles/index.css';
 
 const App = () => {
 	const [count, setCount] = useState(0);
@@ -15,7 +16,7 @@ const App = () => {
 		setStudents([...students, { id: 3, name: 'Doe' }]);
 	};
 	return (
-		<div>
+		<div className='container mx-auto bg-gray-100'>
 			<p> You have clicked {count} times </p>
 			<button onClick={handleOnClick}>Increment</button>
 			<div>
