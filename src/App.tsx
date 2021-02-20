@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	const [count, setCount] = useState(0);
+	const [students, setStudents] = useState([
+		{ id: 1, name: 'John' },
+		{ id: 2, name: 'Mary' },
+	]);
+
+	const handleOnClick = () => {
+		setCount(count + 1);
+	};
+
+	const handleAddUser = () => {
+		setStudents([...students, { id: 3, name: 'Doe' }]);
+	};
+	return (
+		<div>
+			<p> You have clicked {count} times </p>
+			<button onClick={handleOnClick}>Increment</button>
+			<div>
+				{students.map(({ id, name }) => (
+					<div key={id}>
+						<h1>id : {id}</h1>
+						<p>name : {name}</p>
+					</div>
+				))}
+			</div>
+			<button onClick={handleAddUser}>Add user</button>
+		</div>
+	);
+};
 
 export default App;
